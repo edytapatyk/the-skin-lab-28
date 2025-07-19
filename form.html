@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Test Form - The Skin Lab 28</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8f8f8;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 6px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #000;
+      color: white;
+      border: none;
+      width: 100%;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Test Form</h1>
+    <form action="https://formsubmit.co/edytapatyk123@gmail.com" method="POST">
+
+      <!-- FormSubmit hidden fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://theskinlab28.com/thankyou">
+      <input type="hidden" name="_subject" value="New Test Submission - The Skin Lab 28">
+
+      <!-- Sample Fields -->
+      <label for="fullName">Full Name:</label>
+      <input type="text" name="Full Name" id="fullName" required>
+
+      <label for="email">Email:</label>
+      <input type="email" name="Email" id="email" required>
+
+      <label for="concerns">Your Primary Skin Concern:</label>
+      <textarea name="Concern" id="concerns" rows="3" placeholder="e.g., Acne, Redness, Dryness"></textarea>
+
+      <button type="submit">Send Test Form</button>
+    </form>
+  </div>
+
+</body>
+</html>
