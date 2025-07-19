@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Skin Lab 28 | Client Intake Form</title>
   
-  <!-- UPDATED: Google Fonts for new elegant style -->
+  <!-- Google Fonts for the elegant style -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,300&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -27,14 +27,11 @@
       font-family: var(--font-body);
       color: var(--color-text);
       line-height: 1.7;
-      
-      /* --- NEW BACKGROUND IMAGE --- */
       background-image: url('https://www.advancedsciencenews.com/wp-content/uploads/2022/07/Hand-writing-in-a-notebook-black-and-white..jpg');
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
       background-attachment: fixed;
-      
       padding: 40px 20px;
     }
 
@@ -42,11 +39,9 @@
       max-width: 800px;
       margin: 0 auto;
       padding: 50px;
-      
-      /* --- NEW "PAGE ON DESK" EFFECT --- */
-      background-color: rgba(255, 255, 255, 0.96); /* Solid, slightly transparent off-white */
+      background-color: rgba(255, 255, 255, 0.96);
       border: 1px solid #e0e0e0;
-      border-radius: 4px; /* Sharper edges for a paper-like feel */
+      border-radius: 4px;
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
     }
 
@@ -55,11 +50,8 @@
       text-align: center;
       color: var(--color-primary);
       font-size: 3.5em;
-      
-      /* --- THIN ITALIC FONT AS REQUESTED --- */
       font-style: italic;
       font-weight: 300; 
-      
       margin-bottom: 5px;
     }
 
@@ -75,21 +67,19 @@
     }
 
     fieldset {
-      border: none; /* Removed fieldset borders for a cleaner look */
+      border: none;
       border-top: 1px solid var(--color-border);
       padding: 30px 0;
       margin-bottom: 20px;
     }
-    fieldset:first-of-type {
-      border-top: none; /* No top border for the first section */
-    }
+    fieldset:first-of-type { border-top: none; }
 
     legend {
       font-family: var(--font-heading);
       font-size: 1.8em;
       font-weight: 700;
       color: var(--color-text);
-      padding-right: 20px; /* Spacing for the legend */
+      padding-right: 20px;
       margin-bottom: 20px;
     }
 
@@ -185,10 +175,11 @@
     <h1>The Skin Lab 28</h1>
     <h2>Client Intake Form</h2>
 
-    <form id="intake-form" action="https://formsubmit.co/edytapatyk123@gmail.com" method="POST">
+    <form id="intake-form" action="https://formsubmit.co/edytapatyk123@gmail.com" method="POST" enctype="multipart/form-data">
+      
       <input type="text" name="_honey" style="display:none">
       <input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://edytapatyk.github.io/forum-test/thankyou.html">
+      <input type="hidden" name="_next" value="https://theskinlab28.com/thankyou">
       <input type="hidden" name="_subject" value="New Client Intake Form - The Skin Lab 28">
 
       <!-- Section 1: Personal Information -->
@@ -231,7 +222,6 @@
         </div>
         <br>
         
-        <!-- NEW QUESTION -->
         <label>How does your skin feel immediately after cleansing?</label>
         <div class="radio-group">
             <label><input type="radio" name="Post-Cleanse Feel" value="Tight and Dry"> Tight and Dry</label>
@@ -240,7 +230,6 @@
         </div>
         <br>
 
-        <!-- NEW QUESTION -->
         <label>For those who menstruate, do you experience breakouts related to your cycle?</label>
         <div class="radio-group">
             <label><input type="radio" name="Hormonal Breakouts" value="Yes"> Yes</label>
@@ -250,7 +239,7 @@
         <br>
       </fieldset>
 
-      <!-- NEW SECTION: Treatment Goals & Preferences -->
+      <!-- Section 3: Treatment Goals & Preferences -->
       <fieldset>
         <legend>Treatment Goals</legend>
         <label for="skinGoals">In your own words, what is your number one goal for your skin?</label>
@@ -289,7 +278,6 @@
           </div>
           <div class="inline-fields">
             <div>
-              <!-- NEW QUESTION -->
               <label>Average hours of sleep per night?</label>
               <select name="Sleep Habits">
                   <option value="Less than 5">Less than 5 hours</option>
@@ -299,7 +287,6 @@
               </select>
             </div>
             <div>
-              <!-- NEW QUESTION -->
               <label>How would you describe your diet?</label>
               <select name="Diet Description">
                   <option value="Very Healthy">Very Healthy (Whole foods, low sugar)</option>
@@ -308,7 +295,6 @@
               </select>
             </div>
           </div>
-          <!-- NEW QUESTION -->
           <label for="occupation">What is your occupation?</label>
           <input type="text" id="occupation" name="Occupation" placeholder="e.g., Office Worker, Nurse, Outdoor Work, Student">
       </fieldset>
@@ -329,7 +315,6 @@
             <label><input type="checkbox" name="Medical Conditions[]" value="Diabetes"> Diabetes</label>
             <label><input type="checkbox" name="Medical Conditions[]" value="Autoimmune Disorder"> Autoimmune Disorder</label>
             <label><input type="checkbox" name="Medical Conditions[]" value="Pacemaker/Metal Implants"> Pacemaker/Metal Implants</label>
-            <!-- NEW QUESTION -->
             <label><input type="checkbox" name="Medical Conditions[]" value="History of Keloid Scarring"> History of Keloid Scarring</label>
         </div>
         <br>
@@ -383,7 +368,6 @@
   
   <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
   <script>
-    // JavaScript functionality is robust and remains unchanged.
     document.addEventListener('DOMContentLoaded', function() {
       const startCameraButton = document.getElementById('start-camera');
       const capturePhotoButton = document.getElementById('capture-photo');
