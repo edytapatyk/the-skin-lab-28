@@ -107,20 +107,10 @@
         .hero-content .btn { animation: fadeInUp 1s ease-out 1s forwards; }
         
         #about { background-color: var(--color-section-bg); }
-        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem; }
-        .about-image { opacity: 0; display: flex; justify-content: center; align-items: center; }
-        .about-text { opacity: 0; }
-        .about-image img {
-            width: 250px;
-            height: 250px;
-            border-radius: 0;
-            object-fit: cover;
-            object-position: center 10%;
-            display: block;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
+        .about-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 4rem; }
+        .about-text { opacity: 0; text-align: center; }
         .about-text p { font-size: 1.05rem; }
-        .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--color-accent); padding-left: 1.5rem; border-left: 3px solid var(--color-accent); margin: 2rem 0; transition: border-color 0.4s ease, color 0.4s ease;}
+        .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--color-accent); padding-left: 1.5rem; border-left: 3px solid var(--color-accent); margin: 2rem auto; transition: border-color 0.4s ease, color 0.4s ease; max-width: 80%; text-align: left; }
 
         #modalities { background-color: var(--color-background); }
         .modalities-intro { max-width: 700px; margin: 0 auto; }
@@ -232,11 +222,8 @@
         <section id="about">
             <div class="container">
                 <div class="about-grid">
-                    <div class="about-image fade-in-element animate-slide-in-left">
-                        
-                    </div>
-                    <div class="about-text fade-in-element animate-slide-in-right">
-                        <h2 style="text-align: left;">Your Skin Therapist</h2><hr class="section-divider" style="margin: 0 0 2rem 0; max-width: 50px;">
+                    <div class="about-text fade-in-element animate-slide-up">
+                        <h2>Your Skin Therapist</h2><hr class="section-divider" style="margin: 2rem auto; max-width: 50px;">
                         <p>My name is Edyta, a skin therapist with over 20 years of experience working alongside the industry's leading skincare brands. I founded The Skin Lab 28 to create a serene, private space where my clients can feel truly heard—a place to openly discuss skin concerns, goals, and wellbeing needs with a professional who prioritizes care and extensive knowledge above all else.</p>
                         <blockquote class="about-quote">"Has anyone ever truly talked to you about your skin's health? Not just a relaxing facial, but a real strategy to address your concerns and achieve your goals? That is what I do."</blockquote>
                         <p>Rather than offering a standard menu, my treatments are entirely bespoke. Each consultation is a highly interactive partnership, tailored to your skin's unique condition at that moment. This means you'll never have the same facial twice. I use a combination of advanced modalities and potent actives to guide your skin to its optimal health. I am a great believer that every person's skin is beautiful, and I am dedicated to creating the perfect treatment and home-care plan just for you.</p>
@@ -307,7 +294,7 @@
                 <div class="title-container fade-in-element"><h2 class="animate-slide-up">Real Clients, Real Results</h2><hr class="section-divider"></div>
                 <div class="testimonials-grid">
                     <div class="testimonial-card fade-in-element animate-slide-up"><p>"I had the best facial with Edy! I have always had sensitive skin and normally break out after facials, but I left Edy with my skin glowing like I've never seen before. She looked at my skin thoroughly, went through my medical history..."</p><cite>— Eden Charkani</cite></div>
-                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"What a blessing to find Edyta. Not only is she a GREAT cosmetologist - she certainly deserves the 5 Star rating - she puts you totally at ease, is very friendly and beautiful inside and out. I totally trust being in her hands for all my skin care."</p<cite>— Kathrine Franz</cite></div>
+                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"What a blessing to find Edyta. Not only is she a GREAT cosmetologist - she certainly deserves the 5 Star rating - she puts you totally at ease, is very friendly and beautiful inside and out. I totally trust being in her hands for all my skin care."</p><cite>— Kathrine Franz</cite></div>
                     <div class="testimonial-card fade-in-element animate-slide-up"><p>"It was an amazing experience, I have never had a facial so good. It was soothing, relaxing and my face turned out hydrated and brighter..."</p><cite>— Tosin Adeoye</cite></div>
                 </div>
                 <div class="view-more-reviews fade-in-element animate-slide-up"><a href="https://www.google.com/maps/place/The+Skin+Lab+28/data=!4m7!3m6!1s0x487671e0e2049dd7:0x7048b666119c74d!8m2!3d51.5049528!4d-0.4751608!16s%2Fg%2F11pcps3l4n!19sChIJ150E4uBxdkgRTccZYWaLBAc?authuser=0&hl=en&rclk=1" target="_blank" rel="noopener noreferrer">Read More on Google</a></div>
