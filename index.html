@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Skin Lab 28 | Bespoke Clinical Skincare</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-background: #FCFBF9;
+            --color-section-bg: #FFFFFF;
+            --color-primary: #282828;
+            --color-accent: #8D99AE;
+            --color-text: #454545;
+            --color-light-grey: #EFEFEF;
+            --color-header-bg: rgba(252, 251, 249, 0.85);
+            --header-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            --switch-bg: #E0E0E0;
+            --switch-border: #CCCCCC;
+            --switch-handle: #FFFFFF;
+        }
+        body.dark-mode {
+            --color-background: #2E2E2E;
+            --color-section-bg: #383838;
+            --color-primary: #FFFFFF;
+            --color-accent: #8D99AE;
+            --color-text: #E0E0E0;
+            --color-light-grey: #4A4A4A;
+            --color-header-bg: rgba(46, 46, 46, 0.85);
+            --header-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            --switch-bg: #5A5A5A;
+            --switch-border: #4A4A4A;
+            --switch-handle: #383838;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--color-background); color: var(--color-text); line-height: 1.8; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; transition: background-color 0.4s ease, color 0.4s ease; }
+        
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes drawLine { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+        
+        .fade-in-element { opacity: 0; transition: opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1); }
+        .fade-in-element.is-visible { opacity: 1; }
+        .animate-slide-up { transform: translateY(30px); }
+        .animate-slide-up.is-visible { transform: translateY(0); transition: opacity 0.9s cubic-bezier(0.19, 1, 0.22, 1), transform 0.9s cubic-bezier(0.19, 1, 0.22, 1); }
+        .animate-slide-in-left.is-visible { animation: slideInLeft 1s cubic-bezier(0.19, 1, 0.22, 1) forwards; }
+        .animate-slide-in-right.is-visible { animation: slideInRight 1s cubic-bezier(0.19, 1, 0.22, 1) 0.2s forwards; }
+        .title-container .section-divider { transform: scaleX(0); transform-origin: center; }
+        .title-container.is-visible .section-divider { animation: drawLine 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.3s forwards; }
+
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; color: var(--color-primary); font-weight: 700; line-height: 1.2; }
+        h1 { font-size: clamp(3rem, 10vw, 5rem); line-height: 1.1; }
+        h2 { font-size: clamp(2.5rem, 7vw, 3rem); margin-bottom: 0; text-align: center; }
+        h3 { font-size: 1.75rem; margin-bottom: 1rem; color: var(--color-primary); }
+        h4 { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+        p { margin-bottom: 1.2rem; font-weight: 300; }
+        a { color: var(--color-accent); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--color-primary); }
+        .section-divider { border: 0; height: 1px; background-color: var(--color-light-grey); margin: 2rem auto; max-width: 100px; transition: background-color 0.4s ease; }
+        .title-container { text-align: center; margin-bottom: 4rem; }
+
+        .container { max-width: 1140px; margin: 0 auto; padding: 0 1.5rem; }
+        section { padding: 7rem 0; overflow-x: hidden; transition: background-color 0.4s ease; }
+
+        .main-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; padding: 1rem 0; transition: background-color 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease; border-bottom: 1px solid transparent; }
+        .main-header.scrolled { background-color: var(--color-header-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: var(--header-shadow); border-bottom-color: var(--color-light-grey); }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.25rem; font-weight: 400; color: var(--color-primary); text-decoration: none; letter-spacing: 2px; text-transform: uppercase; }
+        .main-nav ul { list-style: none; display: flex; align-items: center; gap: 2.5rem; margin: 0; padding: 0; }
+        .main-nav .nav-link-item a { font-weight: 400; font-size: 0.9rem; color: var(--color-text); padding-bottom: 5px; border-bottom: 2px solid transparent; text-transform: uppercase; letter-spacing: 1px; }
+        .main-nav .nav-link-item a:hover { color: var(--color-primary); border-bottom-color: var(--color-accent); }
+        .header-actions { display: flex; align-items: center; gap: 1.5rem; }
+        
+        .switch { font-size: 17px; position: relative; display: inline-block; width: 3.5em; height: 2em; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; inset: 0; background-color: var(--switch-bg); border: 1px solid var(--switch-border); border-radius: 50px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .slider:before { position: absolute; content: ""; height: 1.4em; width: 1.4em; left: 0.3em; bottom: 0.2em; background-color: var(--switch-handle); border-radius: inherit; transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1); }
+        .switch input:checked + .slider { background-color: var(--color-accent); border-color: var(--color-accent); }
+        .switch input:checked + .slider:before { transform: translateX(1.5em); }
+
+        .btn { display: inline-block; padding: 1rem 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; border-radius: 0; transition: all 0.4s ease; cursor: pointer; border: 1px solid var(--color-accent); position: relative; z-index: 1; overflow: hidden; }
+        .btn::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--color-accent); transform: scaleX(0); transform-origin: right; transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1); z-index: -1;}
+        .btn:hover::before { transform: scaleX(1); transform-origin: left; }
+        .btn:hover { color: var(--color-section-bg); }
+        body.dark-mode .btn:hover { color: #FFFFFF; }
+        .btn .arrow { display: inline-block; transition: transform 0.4s ease; }
+        .btn:hover .arrow { transform: translateX(5px); }
+        .btn-primary { background-color: var(--color-accent); color: var(--color-section-bg); border-color: var(--color-accent); }
+        body.dark-mode .btn-primary { color: #FFFFFF; }
+        .btn-primary:hover { background-color: transparent; color: var(--color-accent); }
+        .btn-primary:hover::before { transform: scaleX(0); }
+        .nav-btn a { padding: 0.6rem 1.2rem; }
+        
+        #hero { background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('https://files.catbox.moe/xw10f5.jpeg') no-repeat center center/cover; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        .hero-content { max-width: 900px; }
+        .hero-content > * { opacity: 0; }
+        .hero-subheading { animation: fadeInUp 1s ease-out 0.4s forwards; display: block; font-weight: 400; font-size: clamp(0.9rem, 4vw, 1.2rem); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 1rem; }
+        .hero-content h1 { color: white; text-shadow: 2px 2px 15px rgba(0,0,0,0.4); animation: fadeInUp 1s ease-out 0.6s forwards; }
+        .hero-content p { font-size: 1.25rem; font-weight: 400; text-transform: uppercase; letter-spacing: 2px; max-width: 600px; margin: 2rem auto 2.5rem; text-shadow: 1px 1px 10px rgba(0,0,0,0.4); color: white; animation: fadeInUp 1s ease-out 0.8s forwards; }
+        .hero-content .btn { animation: fadeInUp 1s ease-out 1s forwards; }
+        
+        #about { background-color: var(--color-section-bg); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1.5fr; align-items: center; gap: 4rem; }
+        .about-image { opacity: 0; display: flex; justify-content: center; align-items: center; }
+        .about-text { opacity: 0; }
+        .about-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 0;
+            object-fit: cover;
+            object-position: center 10%;
+            display: block;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+        .about-text p { font-size: 1.05rem; }
+        .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; color: var(--color-accent); padding-left: 1.5rem; border-left: 3px solid var(--color-accent); margin: 2rem 0; transition: border-color 0.4s ease, color 0.4s ease;}
+
+        #modalities { background-color: var(--color-background); }
+        .modalities-intro { max-width: 700px; margin: 0 auto; }
+        .modalities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+        .modalities-list { list-style: none; }
+        .modalities-list li { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; display: flex; align-items: flex-start; margin-bottom: 1rem; font-weight: 300; }
+        .modalities-column.is-visible li { opacity: 1; transform: translateY(0); }
+        .modalities-column.is-visible li:nth-child(1){transition-delay: 0.1s;} .modalities-column.is-visible li:nth-child(2){transition-delay: 0.2s;} .modalities-column.is-visible li:nth-child(3){transition-delay: 0.3s;} .modalities-column.is-visible li:nth-child(4){transition-delay: 0.4s;} .modalities-column.is-visible li:nth-child(5){transition-delay: 0.5s;} .modalities-column.is-visible li:nth-child(6){transition-delay: 0.6s;} .modalities-column.is-visible li:nth-child(7){transition-delay: 0.7s;}
+        .modalities-list svg { width: 16px; height: 16px; fill: var(--color-accent); margin-right: 1rem; flex-shrink: 0; margin-top: 6px; transition: fill 0.4s ease;}
+
+        #services { background-color: var(--color-section-bg); }
+        .journey-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 2rem; }
+        .journey-text { opacity: 0; text-align: center; max-width: 800px; margin: 0 auto; }
+        .journey-process { margin-top: 2rem; }
+        .journey-process ul { list-style: none; }
+        .journey-process li { display: flex; margin-bottom: 1rem; text-align: left; }
+        .journey-process svg { width: 20px; height: 20px; fill: var(--color-accent); margin-right: 1rem; flex-shrink: 0; margin-top: 4px; }
+
+        #faq { background-color: var(--color-background); }
+        #faq h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        .faq-container { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--color-light-grey); transition: border-color 0.4s ease; }
+        .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1.5rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 700; color: var(--color-primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .faq-icon { transition: transform 0.4s ease; }
+        .faq-item.active .faq-icon { transform: rotate(45deg); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.5s ease-out; }
+        .faq-answer p { padding-bottom: 1.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; font-size: 1.15rem; line-height: 1.6; opacity: 0; transition: opacity 0.4s ease 0.2s; }
+        .faq-item.active .faq-answer { max-height: 300px; }
+        .faq-item.active .faq-answer p { opacity: 1; }
+
+        #testimonials { background-color: var(--color-section-bg); }
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .testimonial-card { background-color: var(--color-background); padding: 2.5rem; border: 1px solid var(--color-light-grey); display: flex; flex-direction: column; transition: all 0.4s ease;}
+        .testimonial-card p { flex-grow: 1; font-style: italic; color: var(--color-text); margin-bottom: 1.5rem; }
+        .testimonial-card cite { font-style: normal; font-weight: 700; color: var(--color-primary); text-align: right; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .view-more-reviews { text-align: center; margin-top: 3rem; }
+
+        #booking { background: var(--color-primary); color: var(--color-background); text-align: center; transition: all 0.4s ease; }
+        #booking h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: clamp(1.8rem, 5vw, 2.2rem);
+            color: var(--color-background);
+        }
+        #booking p { max-width: 600px; margin: 0 auto 2.5rem auto; color: var(--color-text); }
+        body.dark-mode #booking { background: #1F1F1F; }
+
+        footer { background-color: var(--color-section-bg); padding: 3rem 0; text-align: center; font-size: 0.9rem; transition: background-color 0.4s ease; }
+        .footer-content { border-top: 1px solid var(--color-light-grey); padding-top: 3rem; transition: border-color 0.4s ease; }
+        .footer-content p { margin-bottom: 0.5rem; font-weight: 400; }
+        .social-links { margin-top: 1rem; } .social-links a { font-size: 1rem; color: var(--color-text); letter-spacing: 3px; }
+        .social-links a:hover { color: var(--color-accent); }
+
+        @media (max-width: 992px) { .main-nav .nav-link-item { display: none; } }
+        @media (max-width: 768px) {
+            section { padding: 5rem 0; }
+            .logo { font-size: 1.1rem; }
+            .about-grid, .modalities-grid, .journey-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .hero-content p { font-size: 1rem; }
+            .about-image img { width: 180px; height: 180px; }
+            .about-text { text-align: center; }
+            .about-text h2 { text-align: center !important; }
+            .about-quote { margin-left: auto; margin-right: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">The Skin Lab 28</a>
+            <nav class="main-nav">
+                <ul class="header-actions">
+                    <li class="nav-link-item"><a href="#about">Philosophy</a></li>
+                    <li class="nav-link-item"><a href="#modalities">Technology</a></li>
+                    <li class="nav-link-item"><a href="#services">Treatment</a></li>
+                    <li class="nav-link-item"><a href="#faq">FAQ</a></li>
+                    <li class="nav-link-item"><a href="#testimonials">Testimonials</a></li>
+                    <li class="nav-btn"><a href="https://wa.me/447545148182" target="_blank" class="btn">Book</a></li>
+                    <li><label class="switch"><input type="checkbox" id="theme-toggle-input"><span class="slider"></span></label></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <span class="hero-subheading">Welcome To</span>
+                <h1>The Skin Lab 28</h1>
+                <p>EDYTA PATYK • SKIN THERAPY</p>
+                <a href="https://wa.me/447545148182" target="_blank" class="btn btn-primary"><span>Request an Appointment</span><span class="arrow">→</span></a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-image fade-in-element animate-slide-in-left">
+                        <img src="https://files.catbox.moe/1sjssp.jpg" alt="Edyta, Founder of The Skin Lab 28">
+                    </div>
+                    <div class="about-text fade-in-element animate-slide-in-right">
+                        <h2 style="text-align: left;">Your Skin Therapist</h2><hr class="section-divider" style="margin: 0 0 2rem 0; max-width: 50px;">
+                        <p>My name is Edyta, a skin therapist with over 20 years of experience working alongside the industry's leading skincare brands. I founded The Skin Lab 28 to create a serene, private space where my clients can feel truly heard—a place to openly discuss skin concerns, goals, and wellbeing needs with a professional who prioritizes care and extensive knowledge above all else.</p>
+                        <blockquote class="about-quote">"Has anyone ever truly talked to you about your skin's health? Not just a relaxing facial, but a real strategy to address your concerns and achieve your goals? That is what I do."</blockquote>
+                        <p>Rather than offering a standard menu, my treatments are entirely bespoke. Each consultation is a highly interactive partnership, tailored to your skin's unique condition at that moment. This means you'll never have the same facial twice. I use a combination of advanced modalities and potent actives to guide your skin to its optimal health. I am a great believer that every person's skin is beautiful, and I am dedicated to creating the perfect treatment and home-care plan just for you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="modalities">
+            <div class="container">
+                <div class="title-container fade-in-element">
+                    <h2 class="animate-slide-up">Science-Backed Technology</h2>
+                    <p class="modalities-intro animate-slide-up">To create your truly bespoke facial, I select from a range of clinical-grade technologies. This ensures your treatment is perfectly suited to your skin's unique needs on the day of your visit, delivering measurable and visible results.</p>
+                    <hr class="section-divider">
+                </div>
+                <div class="modalities-grid">
+                    <div class="modalities-column fade-in-element">
+                        <h4>Advanced Modalities</h4>
+                        <ul class="modalities-list">
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Microneedling</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Microcurrent Therapy</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Radio Frequency</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Dermalux™ Light Therapy</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Ultrasonic Peeling</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>OxyGeneo™ 3-in-1 Super Facial</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Galvanic & Cavitation Therapies</li>
+                        </ul>
+                    </div>
+                    <div class="modalities-column fade-in-element">
+                        <h4>Commonly Addressed Concerns</h4>
+                        <ul class="modalities-list">
+                            <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Preventative & Corrective Anti-Aging</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Acne, Congestion & Inflammation</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Acne Scarring & Uneven Texture</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Lifting, Toning & Facial Contouring</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Dehydration, Dullness & Radiance</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Pigmentation & Sun Damage</li><li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg>Therapeutic & Lymphatic Massage</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+        <section id="services">
+            <div class="container">
+                <div class="journey-grid">
+                    <div class="journey-text fade-in-element animate-slide-up">
+                        <h3>The Bespoke Treatment</h3>
+                        <hr class="section-divider">
+                        <p>This is not a standard facial; it is a comprehensive, results-driven skin treatment designed exclusively for you. By integrating advanced technology with proven clinical actives, we address your unique skin concerns to achieve visible, long-lasting improvements in skin health, texture, and radiance.</p>
+                        <div class="journey-process">
+                            <ul>
+                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>1. Consultation & Skin Analysis:</strong> We begin with an in-depth consultation and skin analysis to understand your skin history and goals.</div></li>
+                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>2. Tailored Treatment Application:</strong> I perform your unique facial, selecting from a range of modalities like microneedling, radio frequency, or Dermalux™ therapy to target your specific needs.</div></li>
+                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>3. Aftercare & Future Planning:</strong> We conclude with a detailed aftercare plan and recommendations to ensure you maintain and enhance your results between visits.</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq">
+            <div class="container">
+                <div class="title-container fade-in-element"><h2 class="animate-slide-up">Your Questions, Answered</h2><hr class="section-divider"></div>
+                <div class="faq-container fade-in-element animate-slide-up">
+                    <div class="faq-item"><button class="faq-question">What does a 'bespoke' treatment truly mean? <span class="faq-icon">+</span></button><div class="faq-answer"><p>It means your facial is born from conversation and expert analysis, not chosen from a menu. At the start of every session, we discuss your goals and I assess your skin's real-time needs. I then design a unique protocol for you, a truly personal, adaptable approach to skin health.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">I'm new to advanced facials. What should I expect? <span class="faq-icon">+</span></button><div class="faq-answer"><p>My first priority is your comfort in my calm, private studio. We will begin with a relaxed, in-depth chat about your skin's history, your lifestyle, and your ultimate goals. I will explain every step of the proposed treatment, ensuring you feel completely informed and at ease. This first session is about building trust and creating a long-term strategy for your skin.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">Is there any downtime I should plan for? <span class="faq-icon">+</span></button><div class="faq-answer"><p>For the vast majority of treatments, there is absolutely no downtime. You will leave looking radiant and can return to your day immediately. For more intensive, corrective modalities like deep microneedling, you may experience a healthy, pink glow for 24-48 hours. We will always discuss this beforehand to ensure your treatment plan fits perfectly with your schedule.</p></div></div>
+                    <div class="faq-item"><button class="faq-question">How often should I get a facial for the best results? <span class="faq-icon">+</span></button><div class="faq-answer"><p>The ideal frequency for facials depends entirely on your skin’s unique needs. As a qualified skin therapist, I assess each client individually to determine the best treatment plan for their skin type, concerns, and goals.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <div class="title-container fade-in-element"><h2 class="animate-slide-up">Real Clients, Real Results</h2><hr class="section-divider"></div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"I had the best facial with Edy! I have always had sensitive skin and normally break out after facials, but I left Edy with my skin glowing like I've never seen before. She looked at my skin thoroughly, went through my medical history..."</p><cite>— Eden Charkani</cite></div>
+                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"What a blessing to find Edyta. Not only is she a GREAT cosmetologist - she certainly deserves the 5 Star rating - she puts you totally at ease, is very friendly and beautiful inside and out. I totally trust being in her hands for all my skin care."</p><cite>— Kathrine Franz</cite></div>
+                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"It was an amazing experience, I have never had a facial so good. It was soothing, relaxing and my face turned out hydrated and brighter..."</p><cite>— Tosin Adeoye</cite></div>
+                </div>
+                <div class="view-more-reviews fade-in-element animate-slide-up"><a href="https://www.google.com/maps/place/The+Skin+Lab+28/data=!4m7!3m6!1s0x487671e0e2049dd7:0x7048b666119c74d!8m2!3d51.5049528!4d-0.4751608!16s%2Fg%2F11pcps3l4n!19sChIJ150E4uBxdkgRTccZYWaLBAc?authuser=0&hl=en&rclk=1" target="_blank" rel="noopener noreferrer">Read More on Google</a></div>
+            </div>
+        </section>
+
+        <section id="booking">
+            <div class="container">
+                <div class="title-container fade-in-element"><h2 class="animate-slide-up">Begin Your Skin Transformation</h2></div>
+                <p class="fade-in-element animate-slide-up">Your path to luminous, healthy skin begins with a conversation. Contact me to schedule your personal consultation and discover what a truly bespoke treatment can do for you.</p>
+                <a href="https://wa.me/447545148182" target="_blank" class="btn btn-primary fade-in-element animate-slide-up"><span>Request Your Appointment</span><span class="arrow">→</span></a>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container"><div class="footer-content">
+            <p>© 2024 The Skin Lab 28. All Rights Reserved.</p>
+            <p><a href="tel:+447545148182">+44 7545 148182</a></p>
+            <div class="social-links"><a href="https://www.instagram.com/theskinlab28/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a></div>
+        </div></div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('.main-header');
+            const themeToggleInput = document.getElementById('theme-toggle-input');
+            const body = document.body;
+
+            const applyTheme = (theme) => {
+                const isDarkMode = theme === 'dark';
+                body.classList.toggle('dark-mode', isDarkMode);
+                themeToggleInput.checked = isDarkMode;
+            };
+
+            const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            applyTheme(savedTheme);
+
+            themeToggleInput.addEventListener('change', () => {
+                const newTheme = themeToggleInput.checked ? 'dark' : 'light';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const fadeInObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+            }, observerOptions);
+            document.querySelectorAll('.fade-in-element').forEach(el => { fadeInObserver.observe(el); });
+
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.querySelector('.faq-question').addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) { currentlyActive.classList.remove('active'); }
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
