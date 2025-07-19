@@ -132,8 +132,12 @@
         .modalities-list svg { width: 16px; height: 16px; fill: var(--color-accent); margin-right: 1rem; flex-shrink: 0; margin-top: 6px; transition: fill 0.4s ease;}
 
         #services { background-color: var(--color-section-bg); }
-        .journey-grid { display: grid; grid-template-columns: 1fr; align-items: center; gap: 2rem; }
-        .journey-text { opacity: 0; text-align: center; max-width: 800px; margin: 0 auto; }
+        .journey-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; }
+        .journey-image { opacity: 0; }
+        .journey-image img { width: 100%; display: block; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
+        .journey-text { opacity: 0; text-align: left; }
+        #services .journey-text h3 { text-align: left; }
+        #services .journey-text .section-divider { margin: 0 0 2rem 0; max-width: 50px; }
         .journey-process { margin-top: 2rem; }
         .journey-process ul { list-style: none; }
         .journey-process li { display: flex; margin-bottom: 1rem; text-align: left; }
@@ -189,9 +193,10 @@
             .about-grid, .modalities-grid, .journey-grid { grid-template-columns: 1fr; gap: 3rem; }
             .hero-content p { font-size: 1rem; }
             .about-image img { width: 180px; height: 180px; }
-            .about-text { text-align: center; }
-            .about-text h2 { text-align: center !important; }
+            .about-text, .journey-text { text-align: center; }
+            .about-text h2, #services .journey-text h3 { text-align: center !important; }
             .about-quote { margin-left: auto; margin-right: auto; }
+            #services .journey-text .section-divider { margin: 2rem auto; }
         }
     </style>
 </head>
@@ -266,7 +271,10 @@
         <section id="services">
             <div class="container">
                 <div class="journey-grid">
-                    <div class="journey-text fade-in-element animate-slide-up">
+                    <div class="journey-image fade-in-element animate-slide-in-left">
+                        <img src="https://files.catbox.moe/fz7nwu.png" alt="Bespoke skincare treatment products and tools">
+                    </div>
+                    <div class="journey-text fade-in-element animate-slide-in-right">
                         <h3>The Bespoke Treatment</h3>
                         <hr class="section-divider">
                         <p>This is not a standard facial; it is a comprehensive, results-driven skin treatment designed exclusively for you. By integrating advanced technology with proven clinical actives, we address your unique skin concerns to achieve visible, long-lasting improvements in skin health, texture, and radiance.</p>
@@ -299,7 +307,7 @@
                 <div class="title-container fade-in-element"><h2 class="animate-slide-up">Real Clients, Real Results</h2><hr class="section-divider"></div>
                 <div class="testimonials-grid">
                     <div class="testimonial-card fade-in-element animate-slide-up"><p>"I had the best facial with Edy! I have always had sensitive skin and normally break out after facials, but I left Edy with my skin glowing like I've never seen before. She looked at my skin thoroughly, went through my medical history..."</p><cite>— Eden Charkani</cite></div>
-                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"What a blessing to find Edyta. Not only is she a GREAT cosmetologist - she certainly deserves the 5 Star rating - she puts you totally at ease, is very friendly and beautiful inside and out. I totally trust being in her hands for all my skin care."</p><cite>— Kathrine Franz</cite></div>
+                    <div class="testimonial-card fade-in-element animate-slide-up"><p>"What a blessing to find Edyta. Not only is she a GREAT cosmetologist - she certainly deserves the 5 Star rating - she puts you totally at ease, is very friendly and beautiful inside and out. I totally trust being in her hands for all my skin care."</p<cite>— Kathrine Franz</cite></div>
                     <div class="testimonial-card fade-in-element animate-slide-up"><p>"It was an amazing experience, I have never had a facial so good. It was soothing, relaxing and my face turned out hydrated and brighter..."</p><cite>— Tosin Adeoye</cite></div>
                 </div>
                 <div class="view-more-reviews fade-in-element animate-slide-up"><a href="https://www.google.com/maps/place/The+Skin+Lab+28/data=!4m7!3m6!1s0x487671e0e2049dd7:0x7048b666119c74d!8m2!3d51.5049528!4d-0.4751608!16s%2Fg%2F11pcps3l4n!19sChIJ150E4uBxdkgRTccZYWaLBAc?authuser=0&hl=en&rclk=1" target="_blank" rel="noopener noreferrer">Read More on Google</a></div>
