@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Skin Consultation Form</title>
+    <!-- Google Fonts Import -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Nunito+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'Nunito Sans', sans-serif;
+            --primary-color: #6d7b6a;
+            --accent-color: #b09a7a;
+            --text-color: #3e3e3e;
+            --label-color: #5c5c5c;
+            --bg-form: rgba(255, 255, 255, 0.85);
+            --border-color: #d1c9c0;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-body);
+            background-image: url('https://files.catbox.moe/xvx3k0.png');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: var(--bg-form);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        header h1 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-style: italic;
+            font-size: 2.8em;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        header p {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            color: var(--label-color);
+        }
+        form { width: 100%; }
+        fieldset {
+            border: none;
+            border-top: 1px solid var(--border-color);
+            padding: 30px 10px;
+            margin-bottom: 25px;
+        }
+        legend {
+            font-family: var(--font-heading);
+            font-size: 1.8em;
+            font-weight: 500;
+            font-style: italic;
+            color: var(--primary-color);
+            padding: 0 15px;
+            margin-left: -15px;
+        }
+        .form-group { margin-bottom: 25px; }
+        .form-group.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.95em; color: var(--label-color); }
+        input[type="text"], input[type="email"], input[type="tel"], input[type="date"], input[type="number"], textarea, select {
+            width: 100%; padding: 14px; border: 1px solid var(--border-color); border-radius: 6px; font-size: 1em; font-family: var(--font-body); background-color: #fff; transition: all 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(176, 154, 122, 0.2); }
+        textarea { resize: vertical; min-height: 140px; }
+        .checkbox-group, .radio-group { display: flex; flex-direction: column; gap: 12px; }
+        .checkbox-item, .radio-item { display: flex; align-items: center; cursor: pointer; }
+        input[type="checkbox"], input[type="radio"] { margin-right: 12px; width: 1.1em; height: 1.1em; accent-color: var(--primary-color); }
+        .submit-btn { display: block; width: 100%; padding: 16px; background: linear-gradient(145deg, var(--primary-color), #5a6857); color: white; border: none; border-radius: 8px; font-size: 1.2em; font-weight: 600; font-family: var(--font-body); cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); background: linear-gradient(145deg, #7a8a77, var(--primary-color)); }
+        @media (max-width: 768px) { .container { padding: 20px; margin: 10px; } .form-group.grid-2 { grid-template-columns: 1fr; } header h1 { font-size: 2.2em; } legend { font-size: 1.5em; } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <form id="consultation-form" action="https://formspree.io/f/mwpqvqlw" method="POST" enctype="multipart/form-data">
+            
+            <header>
+                <h1>Online Skin Consultation</h1>
+                <p>Please fill this form out in as much detail as possible. It will help paint a picture of what could be going on with your skin, enabling me to make the right recommendations for you.</p>
+            </header>
+
+            <!-- 
+                IMPORTANT: This field tells Formspree where to redirect the user after submission.
+                You MUST replace the placeholder value with the full URL of your thank you page.
+                For example: <input type="hidden" name="_next" value="https://www.theskinlab28.com/thankyou.html">
+            -->
+            <input type="hidden" name="_next" value="https://theskinlab28/thankyou">
+            
+            <!-- Personal Details -->
+            <fieldset>
+                <legend>Personal Details</legend>
+                <div class="form-group grid-2">
+                    <div>
+                        <label for="first-name">First Name</label>
+                        <input type="text" id="first-name" name="first_name" required>
+                    </div>
+                    <div>
+                        <label for="last-name">Last Name</label>
+                        <input type="text" id="last-name" name="last_name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address-1">Street Address</label>
+                    <input type="text" id="address-1" name="street_address_1">
+                </div>
+                <div class="form-group">
+                    <label for="address-2">Street Address Line 2</label>
+                    <input type="text" id="address-2" name="street_address_2">
+                </div>
+                <div class="form-group grid-2">
+                    <div>
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city">
+                    </div>
+                     <div>
+                        <label for="state">State / Province</label>
+                        <input type="text" id="state" name="state">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="zip">Postal / Zip Code</label>
+                    <input type="text" id="zip" name="postal_zip_code">
+                </div>
+                 <div class="form-group grid-2">
+                    <div>
+                        <label for="area-code">Area Code</label>
+                        <input type="tel" id="area-code" name="area_code">
+                    </div>
+                     <div>
+                        <label for="phone-number">Phone Number</label>
+                        <input type="tel" id="phone-number" name="phone_number">
+                    </div>
+                </div>
+                <div class="form-group grid-2">
+                    <div>
+                        <label for="date">Today's Date</label>
+                        <input type="date" id="date" name="consultation_date" required>
+                    </div>
+                    <div>
+                        <label for="age">Age</label>
+                        <input type="number" id="age" name="age">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="occupation">Occupation</label>
+                    <input type="text" id="occupation" name="occupation">
+                </div>
+            </fieldset>
+
+            <!-- Medical History -->
+            <fieldset>
+                <legend>Medical History</legend>
+                <div class="form-group">
+                    <label>Are you suffering from any of the following?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Impetigo"><span>Infectious diseases (e.g., Impetigo)</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Boils"><span>Boils</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Ringworm"><span>Ringworm</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Coldsore"><span>Coldsore (Herpes Simplex)</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Chicken Pox"><span>Chicken Pox</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Warts"><span>Warts</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Sunburn"><span>Damaged skin (e.g., Sunburn)</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Conjunctivitis"><span>Infectious eye problems (e.g., Conjunctivitis)</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="contraindications[]" value="Scabies"><span>Scabies or other infestations</span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Please tick if any of the following apply to you:</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Diabetes"><span>Diabetes</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Epilepsy"><span>Epilepsy</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Cancer"><span>Cancer</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="High/Low Blood Pressure"><span>High or low blood pressure</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Pregnancy"><span>Pregnancy</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Skin Disorder"><span>Skin disorder</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Recent Operation"><span>Recent operation</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Heart/Cardiac Disorder"><span>Heart/cardiac disorder</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Thrombosis/Phlebitis"><span>Thrombosis/Phlebitis (blood clots)</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Pacemaker/Metal Pins"><span>Pacemaker or internal metal pins</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="History of Skin Cancer"><span>History of skin cancer</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Thyroid Problem"><span>Thyroid problem</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Currently Receiving Medical Treatment"><span>Currently receiving medical treatment</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Tumours/Swelling/Oedema"><span>Any tumours, abnormal swelling or lymph oedema</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Recent Botox/Injectables"><span>Recently had Botox/Collagen/Injectables</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Contraception/Hormonal Substitute"><span>Contraception/hormonal substitute</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="medical_conditions[]" value="Tattoo/Permanent Makeup"><span>Tattoo/semi-permanent make up in the area</span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="medical-notes">If you ticked any of the above, please provide notes here:</label>
+                    <textarea id="medical-notes" name="medical_notes"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="any-medication">Any medication?</label>
+                    <textarea id="any-medication" name="any_medication_notes"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="surgery-history">In the last 9 months, have you undergone any surgery? If yes, please specify below.</label>
+                    <textarea id="surgery-history" name="surgery_history"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="health-problems">Any health problems, past and present?</label>
+                    <textarea id="health-problems" name="health_problems"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="current-medications">List of any medication and supplements you are currently taking:</label>
+                    <textarea id="current-medications" name="current_medications_supplements"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="allergies">Allergies?</label>
+                    <textarea id="allergies" name="allergies_notes"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Lifestyle -->
+            <fieldset>
+                <legend>Lifestyle</legend>
+                <div class="form-group">
+                    <label for="lifestyle">Life style - sedentary? Exercise regime? Stress levels? How much water?</label>
+                    <textarea id="lifestyle" name="lifestyle_details"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="restricted-diet">Do you follow a restricted diet - please give details</label>
+                    <textarea id="restricted-diet" name="restricted_diet_details"></textarea>
+                </div>
+                 <div class="form-group">
+                    <label for="alcohol">How much alcohol do you consume per week?</label>
+                    <input type="text" id="alcohol" name="alcohol_consumption">
+                </div>
+                 <div class="form-group">
+                    <label for="smoking">Do you smoke? If yes, how long for?</label>
+                    <input type="text" id="smoking" name="smoking_details">
+                </div>
+                 <div class="form-group">
+                    <label for="caffeine">How many caffeinated beverages daily?</label>
+                    <input type="text" id="caffeine" name="caffeine_consumption">
+                </div>
+                <div class="form-group">
+                    <label for="daily-food">What does a typical day's food look like for you? Please list brands and include all snacks and drinks. As much information as possible.</label>
+                    <textarea id="daily-food" name="daily_food_log"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="daily-routine">What does a typical day look like for you? What do you do as soon as you wake up? Do you work from home or in an office? Do you get outdoors for fresh air and sunlight daily?</label>
+                    <textarea id="daily-routine" name="daily_routine_details"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Skincare History -->
+            <fieldset>
+                <legend>Skincare History</legend>
+                <div class="form-group">
+                    <label for="current-skincare">Current skincare routine including products?</label>
+                    <textarea id="current-skincare" name="current_skincare_routine"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="past-treatments">Have you ever had a chemical peel, laser, microdermabrasion or any resurfacing treatments? When?</label>
+                    <textarea id="past-treatments" name="past_treatments"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="prescription-products">Have you used Accutane, Retin A, Renova or any other prescription skin products in the last three months?</label>
+                    <textarea id="prescription-products" name="prescription_products"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="active-products">Are you currently using any products that contain Glycolic acid, Lactic acid, any Hydroxy acid product, Vitamin A derivatives and any exfoliation scrubs? If yes, which ones and by which brand?</label>
+                    <textarea id="active-products" name="active_products"></textarea>
+                </div>
+            </fieldset>
+            
+            <!-- Current Skin Concerns -->
+            <fieldset>
+                <legend>Current Skin Concerns</legend>
+                <div class="form-group">
+                    <label>Current complaint (select all that apply):</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Breakouts"><span>Breakouts</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Acne"><span>Acne</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Blackheads/Whiteheads"><span>Blackheads/whiteheads</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Excessive Oil/Shine"><span>Excessive oil/shine</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Rosacea"><span>Rosacea</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Broken Capillaries"><span>Broken capillaries</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Redness"><span>Redness</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Uneven Skin Tone"><span>Uneven skin tone</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Sun Damage/Pigmentation"><span>Sun damage/pigmentation</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Wrinkles/Fine Lines"><span>Wrinkles/fine lines</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Dull/Dry Skin"><span>Dull/dry skin</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Flaky Skin"><span>Flaky skin</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Dehydrated"><span>Dehydrated</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_complaints[]" value="Open Pores"><span>Open pores</span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="problem-age">What age did these problems occur?</label>
+                    <input type="text" id="problem-age" name="problem_onset_age">
+                </div>
+                <div class="form-group">
+                    <label>Are your current skin problems getting more pronounced?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="problems_worsening" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="problems_worsening" value="No"><span>No</span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="previous-treatment">Have you received treatment for this problem before? If yes, when and what method?</label>
+                    <textarea id="previous-treatment" name="previous_treatment"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Do you ever experience these conditions with your skin?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="skin_conditions_experience[]" value="Flakiness"><span>Flakiness</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_conditions_experience[]" value="Tightness"><span>Tightness</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="skin_conditions_experience[]" value="Obvious Dryness"><span>Obvious dryness</span></div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Do you burn easily in moderate sunlight?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="burn_easily" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="burn_easily" value="No"><span>No</span></div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Do you blush easily when nervous?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="blush_easily" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="blush_easily" value="No"><span>No</span></div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Do you have a tendency to redness?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="tendency_redness" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="tendency_redness" value="No"><span>No</span></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="skin-feel">How does your skin feel on a daily basis?</label>
+                    <select id="skin-feel" name="daily_skin_feel">
+                        <option value="">-- Please select --</option>
+                        <option value="Normal">Normal</option>
+                        <option value="Oily">Oily</option>
+                        <option value="Dry">Dry</option>
+                        <option value="Combination">Combination</option>
+                    </select>
+                </div>
+                 <div class="form-group">
+                    <label>Are you prone to cold sores?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="prone_cold_sores" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="prone_cold_sores" value="No"><span>No</span></div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Do you ever experience a burning/itching sensation on your skin?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="burning_itching_sensation" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="burning_itching_sensation" value="No"><span>No</span></div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Reactions & Final Questions -->
+            <fieldset>
+                <legend>Reactions & Final Questions</legend>
+                <div class="form-group">
+                    <label>Have you ever had a reaction to any of the following?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Cosmetics"><span>Cosmetics</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Medicine"><span>Medicine</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Iodine"><span>Iodine</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Pollen"><span>Pollen</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Food"><span>Food</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Hydroxy Acids"><span>Hydroxy acids</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Animals"><span>Animals</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Fragrance"><span>Fragrance</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Sunscreen"><span>Sunscreen</span></div>
+                        <div class="checkbox-item"><input type="checkbox" name="reactions[]" value="Other"><span>Other (please specify in notes)</span></div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Are you currently having or due your period?</label>
+                    <div class="radio-group">
+                        <div class="radio-item"><input type="radio" name="period_status" value="Yes"><span>Yes</span></div>
+                        <div class="radio-item"><input type="radio" name="period_status" value="No"><span>No</span></div>
+                        <div class="radio-item"><input type="radio" name="period_status" value="N/A"><span>N/A</span></div>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label for="skincare-goals">What are your skincare goals? How can I help you?</label>
+                    <textarea id="skincare-goals" name="skincare_goals"></textarea>
+                </div>
+            </fieldset>
+
+            <!-- Submission & Confirmation -->
+            <fieldset>
+                <legend>Confirmation</legend>
+                 <div class="form-group">
+                    <label for="email">Your Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="example@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signature">Digital Signature (type your full name)</label>
+                    <input type="text" id="signature" name="signature" required>
+                </div>
+                <div class="form-group">
+                    <label for="photo-1">Upload Photos (Optional)<br><small style="font-weight:normal;">Note: File uploads require a Formspree paid plan.</small></label>
+                    <input type="file" id="photo-1" name="photo_upload_1" accept="image/*">
+                </div>
+                 <div class="form-group">
+                    <label for="photo-2">Upload Photo 2</label>
+                    <input type="file" id="photo-2" name="photo_upload_2" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="photo-3">Upload Photo 3</label>
+                    <input type="file" id="photo-3" name="photo_upload_3" accept="image/*">
+                </div>
+            </fieldset>
+
+            <button type="submit" class="submit-btn">Submit My Consultation</button>
+            
+        </form>
+    </div>
+
+</body>
+</html>
