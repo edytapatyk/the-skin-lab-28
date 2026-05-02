@@ -182,9 +182,25 @@
         .journey-image { opacity: 0; }
         .journey-image img { width: 100%; display: block; box-shadow: 0 8px 25px rgba(0,0,0,0.08); }
         .journey-text { opacity: 0; text-align: left; }
+        #services .journey-text h2 { text-align: left; margin-bottom: 0; font-family: 'Montserrat', sans-serif; font-size: clamp(2.0rem, 6vw, 2.5rem); font-weight: 300; text-transform: uppercase; letter-spacing: 3px; }
         #services .journey-text h3 { text-align: left; }
-        #services .journey-text .section-divider { margin: 0 0 2rem 0; max-width: 50px; }
-        .journey-process { margin-top: 2rem; }
+        #services .journey-text .section-divider { margin: 1rem 0 2rem 0; max-width: 50px; }
+        .journey-process { margin-top: 1.5rem; }
+        
+        /* Treatment Accordion */
+        .treatment-accordion { margin-top: 2rem; width: 100%; }
+        .treatment-item { border: 1px solid var(--color-light-grey); margin-bottom: 0.8rem; background-color: var(--color-background); transition: border-color 0.4s ease, box-shadow 0.4s ease; }
+        .treatment-header { width: 100%; background: none; border: none; text-align: left; padding: 0.6rem 1.5rem; font-family: 'Montserrat', sans-serif; font-size: 1.05rem; font-weight: 500; color: #8d99ae; cursor: pointer; display: flex; justify-content: space-between; align-items: center; text-transform: uppercase; letter-spacing: 1.5px; transition: color 0.3s ease; }
+        .treatment-header:hover { color: var(--color-primary); }
+        .treatment-icon { transition: transform 0.4s ease; font-weight: 400; font-size: 1.5rem; color: var(--color-primary); }
+        .treatment-item.active { border-color: var(--color-accent); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .treatment-item.active .treatment-icon { transform: rotate(45deg); color: var(--color-accent); }
+        .treatment-content { max-height: 0; overflow: hidden; transition: max-height 0.5s cubic-bezier(0.23, 1, 0.32, 1); }
+        .treatment-content-inner { padding: 0 1.5rem 1.5rem; opacity: 0; transition: opacity 0.4s ease 0.2s; color: #8d99ae; }
+        .treatment-item.active .treatment-content { max-height: 2000px; }
+        .treatment-item.active .treatment-content-inner { opacity: 1; }
+        .treatment-price { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; color: var(--color-primary); margin-top: 1.5rem; display: block; border-top: 1px solid var(--color-light-grey); padding-top: 1rem; letter-spacing: 1px; }
+        .treatment-suitability { font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--color-text); margin-top: 1.5rem; display: block; }
         .journey-process ul { list-style: none; }
         .journey-process li { display: flex; margin-bottom: 1rem; text-align: left; }
         .journey-process svg { width: 20px; height: 20px; fill: var(--color-accent); margin-right: 1rem; flex-shrink: 0; margin-top: 4px; }
@@ -416,16 +432,205 @@
                         <img src="https://files.catbox.moe/fz7nwu.png" alt="Bespoke skincare treatment products and tools">
                     </div>
                     <div class="journey-text fade-in-element animate-slide-in-right">
-                        <h3>The Bespoke Treatment</h3>
-                        <hr class="section-divider">
-                        <p>This is not a standard facial; it is a comprehensive, results-driven skin treatment designed exclusively for you. By integrating advanced technology with proven clinical actives, we address your unique skin concerns to achieve visible, long-lasting improvements in skin health, texture, and radiance.</p>
-                        <div class="journey-process">
-                            <ul>
-                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>1. Consultation & Skin Analysis:</strong> We begin with an in-depth consultation and skin analysis to understand your skin history and goals.</div></li>
-                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>2. Tailored Treatment Application:</strong> I perform your unique facial, selecting from a range of modalities like microneedling, radio frequency, or Dermalux™ therapy to target your specific needs.</div></li>
-                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>3. Aftercare & Future Planning:</strong> We conclude with a detailed aftercare plan and recommendations to ensure you maintain and enhance your results between visits.</div></li>
-                            </ul>
+                        <h2>Treatments</h2>
+                        <hr class="section-divider" style="margin: 1rem 0 2rem 0; max-width: 50px;">
+                        
+                        <div class="treatment-accordion">
+                            <!-- Skin Consultation -->
+                            <div class="treatment-item active">
+                                <button class="treatment-header">SKIN CONSULTATION <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>A detailed in-person skin analysis designed to understand your skin beyond the surface.</p>
+                                        <p>Your skin condition, barrier function, current routine, and lifestyle factors are assessed to identify underlying causes and triggers.</p>
+                                        <p>You will receive tailored guidance and a personalised treatment plan to support long-term skin health and visible results.</p>
+                                        <span class="treatment-suitability">Suitable for: acne, pigmentation, sensitivity, ageing, and reactive skin.</span>
+                                        <span class="treatment-price">£150</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Bespoke Facial Treatment -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">BESPOKE FACIAL TREATMENT <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>A fully personalised facial designed to restore skin balance, function, and radiance while promoting deep relaxation.</p>
+                                        <p>Each treatment is tailored using a combination of advanced modalities, professional skincare, and manual techniques, selected according to your skin’s condition on the day.</p>
+                                        <div class="journey-process">
+                                            <span style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Includes:</span>
+                                            <ul>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Face, neck & shoulder massage</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Scalp massage</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Fascia release & lymphatic drainage techniques</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Customised active ingredients & technologies</div></li>
+                                            </ul>
+                                        </div>
+                                        <span class="treatment-price">£150</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Add-ons to Bespoke Facial -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">ADD-ONS TO BESPOKE FACIAL <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <div style="margin-bottom: 1.5rem;">
+                                            <span style="font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--color-primary);">Oxygen Infusion</span>
+                                            <p style="margin-bottom: 0;">A revitalising treatment that delivers oxygen and active ingredients deep into the skin to improve hydration, radiance, and vitality.</p>
+                                        </div>
+                                        <div style="margin-bottom: 1.5rem;">
+                                            <span style="font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--color-primary);">Galvanic</span>
+                                            <p style="margin-bottom: 0;">A deep-cleansing treatment using low-level electrical current to draw out impurities and enhance product absorption.</p>
+                                        </div>
+                                        <div style="margin-bottom: 1.5rem;">
+                                            <span style="font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--color-primary);">Ultrasonic Cavitation</span>
+                                            <p style="margin-bottom: 0;">A deep-cleansing enhancement using ultrasonic vibrations to dislodge impurities, reduce congestion, and refine skin texture.</p>
+                                        </div>
+                                        <div>
+                                            <span style="font-weight: 700; display: block; margin-bottom: 0.2rem; color: var(--color-primary);">Sonophoresis (Ultrasonic Infusion)</span>
+                                            <p style="margin-bottom: 0.5rem;">A high-performance, non-invasive skin treatment that uses advanced ultrasonic technology to enhance the delivery of active ingredients deep within the skin. This process significantly improves serum absorption, boosts hydration levels, and supports overall skin rejuvenation at a cellular level.</p>
+                                            <p style="margin-bottom: 0;">Ideal for clients seeking visibly refined, radiant, and deeply nourished skin with no downtime.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Microcurrent Treatment -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">MICROCURRENT TREATMENT <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>A non-invasive treatment using low-level electrical currents to stimulate cellular energy (ATP), improve muscle tone, and support lymphatic drainage.</p>
+                                        <p>Helps lift and define facial contours, reduce puffiness, and improve circulation for a more sculpted appearance.</p>
+                                        <div style="margin-top: 1.5rem;">
+                                            <span style="display: block; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Single treatment:</strong> £150</span>
+                                            <span style="display: block; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Course of 3:</strong> £435</span>
+                                            <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Course of 6:</strong> £812</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- OxyGeneo+ Treatment -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">OXYGENEO+ TREATMENT <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>A breakthrough 3-in-1 "Super Facial" that redefines skincare treatments by combining three essential actions simultaneously:</p>
+                                        <div class="journey-process">
+                                            <ul>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>Exfoliation:</strong> Gently removes the upper skin layer to clear away dead cells and prepare the skin to receive active nutrients.</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>Oxygenation:</strong> The OxyGeneo effect produces CO2 bubbles that gently burst on the skin surface, sending oxygen-rich blood to the area. This increases capillary flow and optimises skin metabolism.</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div><strong>Infusion:</strong> Deeply embeds highly effective active ingredients into the skin.</div></li>
+                                            </ul>
+                                        </div>
+                                        <p style="margin-top: 1.5rem;">This treatment naturally oxygenates the skin from within, delivering immediate glowing results and long-term improvements to skin texture, tone, and hydration with no downtime.</p>
+                                        <span class="treatment-price">£150</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Acne Specialist Approach -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">ACNE SPECIALIST APPROACH <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>Acne is never one-size-fits-all — your treatment is designed entirely around you. Each journey begins with an in-depth consultation, where we explore your skin, current products, lifestyle, and underlying triggers.</p>
+                                        <p>From there, we create a personalised plan tailored to your unique acne type, combining targeted treatments with guidance on skincare, nutrition, and daily habits. This holistic approach supports true, long-term skin healing.</p>
+                                        <p>You can see real client results and transformations on our <a href="https://www.instagram.com/theskinlab28/" target="_blank" rel="noopener noreferrer" style="color: var(--color-accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid var(--color-accent);">Instagram</a>.</p>
+                                        <span class="treatment-price">£150</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Microneedling -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">MICRONEEDLING <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p style="font-style: italic; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 1rem; color: var(--color-accent);">A collagen-induction treatment</p>
+                                        <p>Microneedling device creates controlled micro-channels in the skin to stimulate a natural healing response.</p>
+                                        <p>This process boosts collagen and elastin production, improving firmness, structure, and overall skin quality. Active serums are delivered deeper into the skin for enhanced results.</p>
+                                        <div class="journey-process">
+                                            <span style="font-weight: 700; display: block; margin-bottom: 0.5rem;">Benefits:</span>
+                                            <ul>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Fine lines</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Enlarged pores</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Acne scarring</div></li>
+                                                <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"></path></svg><div>Texture & tone improvement</div></li>
+                                            </ul>
+                                        </div>
+                                        <div style="margin-top: 1.5rem; border-top: 1px solid var(--color-light-grey); padding-top: 1.5rem;">
+                                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                                                <div>
+                                                    <span style="display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Face</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Single: £150</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Course of 3: £395</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Course of 6: £772</span>
+                                                </div>
+                                                <div>
+                                                    <span style="display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Face + Neck</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Single: £180</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Course of 3: £482</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Course of 6: £932</span>
+                                                </div>
+                                                <div>
+                                                    <span style="display: block; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-primary); text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem;">Face + Neck + Décolletage</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Single: £210</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Course of 3: £569</span>
+                                                    <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.25rem;">Course of 6: £1,094</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Deeply Relaxing Treatment -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">DEEPLY RELAXING TREATMENT <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>Imagine yourself floating on a cloud, cocooned in a weighted blanket, as I dedicate full attention to easing tension in your face, scalp, neck, and chest. With each gentle stroke, I focus on your specific needs, delving deep into the tissue and muscles to release built-up stress.</p>
+                                        <p>As you unwind, feel the world's weight lift off your shoulders, allowing your mind to drift into a state of peaceful stillness. This is more than a facial; it's a 60-minute immersion in pure relaxation, completely tailored to you.</p>
+                                        <span class="treatment-price">£150</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Dermalux Tri-Wave Phototherapy -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">DERMALUX TRI-WAVE PHOTOTHERAPY <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>Medical-grade LED light therapy that stimulates the skin’s natural repair and renewal processes using targeted wavelengths.</p>
+                                        <p>Using the advanced Tri-Wave system, we can deliver Blue, Red, and Near-Infrared wavelengths simultaneously or individually to reduce inflammation, calm breakouts, improve pigmentation, and support collagen production — with no heat or downtime.</p>
+                                        <div style="margin-top: 1.5rem;">
+                                            <span style="display: block; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Single treatment:</strong> £55</span>
+                                            <span style="display: block; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Add-on to facial:</strong> £30</span>
+                                            <span style="display: block; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Course of 3:</strong> £150</span>
+                                            <span style="display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;"><strong>Course of 6:</strong> £300</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Radiofrequency -->
+                            <div class="treatment-item">
+                                <button class="treatment-header">RADIOFREQUENCY <span class="treatment-icon">+</span></button>
+                                <div class="treatment-content">
+                                    <div class="treatment-content-inner">
+                                        <p>Radiofrequency is a non-invasive, advanced aesthetic treatment designed to rejuvenate and tighten the skin by gently heating the deeper layers. This controlled thermal energy stimulates natural collagen and elastin production, helping to improve skin firmness, reduce fine lines, and enhance overall texture.</p>
+                                        <p>Suitable for the face and body, radiofrequency treatments can target areas prone to laxity, promoting a smoother, more lifted appearance without downtime. The result is skin that looks refreshed, toned, and naturally revitalised.</p>
+                                        <p>With a focus on both immediate glow and long-term skin health, radiofrequency offers a sophisticated solution for those seeking subtle yet effective rejuvenation.</p>
+                                        <span class="treatment-price">£150</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -543,6 +748,17 @@
             document.querySelectorAll('.faq-item').forEach(item => {
                 item.querySelector('.faq-question').addEventListener('click', () => {
                     const currentlyActive = document.querySelector('.faq-item.active');
+                    if (currentlyActive && currentlyActive !== item) { 
+                        currentlyActive.classList.remove('active'); 
+                    }
+                    item.classList.toggle('active');
+                });
+            });
+
+            // --- TREATMENT ACCORDION ---
+            document.querySelectorAll('.treatment-item').forEach(item => {
+                item.querySelector('.treatment-header').addEventListener('click', () => {
+                    const currentlyActive = document.querySelector('.treatment-item.active');
                     if (currentlyActive && currentlyActive !== item) { 
                         currentlyActive.classList.remove('active'); 
                     }
